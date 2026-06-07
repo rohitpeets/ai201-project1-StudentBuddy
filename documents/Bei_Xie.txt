@@ -1,0 +1,178 @@
+Professor: Bei Xie
+Department: Computer Science
+School: McNeese State University
+Overall Rating: 2.7/5
+Would Take Again: 50%
+Difficulty: 2.6/5
+Summary: Dr. Bei Xie receives mixed reviews. Most students criticize her for reading directly from slides, a strong accent that makes her hard to understand, and unclear assignments. However, some students note she is accessible outside class, gives extra credit, and that her tests are open notes. Students who read the book and copy her slides tend to pass.
+
+--- REVIEWS ---
+
+Course: CSCI410
+Date: Jan 24th, 2025
+Quality: 5.0
+Difficulty: 2.0
+For Credit: Yes
+Attendance: Mandatory
+Would Take Again: Yes
+Grade: A
+Textbook: N/A
+Tags: Extra Credit, Graded By Few Things, Accessible Outside Class
+Review: She is not the best but she tries her best. She tries her best to answer questions when asked. She also gives an extra credit bonus.
+
+---
+
+Course: CSCI424
+Date: Jun 4th, 2024
+Quality: 5.0
+Difficulty: 2.0
+For Credit: Yes
+Attendance: Not Mandatory
+Would Take Again: Yes
+Grade: A
+Textbook: N/A
+Tags: None
+Review: This teacher is due way more credit than she has on this site. I'm going to give her a perfect score just so that she has a higher rating than Dr. Lavergne. Full hate to Dr. Lavergne.
+
+---
+
+Course: CSCI410
+Date: Feb 20th, 2023
+Quality: 4.0
+Difficulty: 2.0
+For Credit: Yes
+Attendance: Mandatory
+Would Take Again: Yes
+Grade: A+
+Textbook: Yes
+Tags: Get Ready To Read, Group Projects, Lecture Heavy
+Review: Easy class. Pay attention to the slides. Accent is easy to understand if you try. Just model the work after the slides in class and you'll be fine.
+
+---
+
+Course: CSCI410
+Date: Dec 4th, 2022
+Quality: 3.0
+Difficulty: 3.0
+For Credit: Yes
+Attendance: Mandatory
+Would Take Again: Yes
+Grade: A
+Textbook: Yes
+Tags: Group Projects, Clear Grading Criteria, Lecture Heavy
+Review: She's not as bad as the reviews are saying. She has a strong accent and her lectures are useless. But copy everything she writes, and slightly pay attention and you're good. Def read the chapters to understand. Group projects are easy, just remember she likes simple. Tests are open notes, open everything, so print everything.
+
+---
+
+Course: CSCI409
+Date: Jun 18th, 2021
+Quality: 5.0
+Difficulty: 3.0
+For Credit: Yes
+Attendance: Not Mandatory
+Would Take Again: Yes
+Grade: A
+Textbook: No
+Online Class: Yes
+Tags: None
+Review: I enjoy taking Dr. Bei Xie's CSCI 409 because her class is really useful. The Android programming seems confusing at the beginning but after a few classes the overall concepts will reveal by itself. You will be able to develop a decent app by the end of the class. This course is challenging but useful.
+
+---
+
+Course: CSCI410
+Date: Dec 15th, 2020
+Quality: 2.0
+Difficulty: 3.0
+For Credit: Yes
+Attendance: Not Mandatory
+Would Take Again: Yes
+Grade: A
+Textbook: No
+Online Class: Yes
+Tags: None
+Review: I do not believe she is as difficult as all the other reviews would have you believe. Her English is not the best, which makes it harder to understand. She is also not amazing at education so the class experiences won't be the best either. Her one redeeming quality is that she will work with you to answer any problems you have, well mostly.
+
+---
+
+Course: CSCI424
+Date: Sep 19th, 2019
+Quality: 1.0
+Difficulty: 3.0
+For Credit: Yes
+Attendance: N/A
+Would Take Again: No
+Grade: Not sure yet
+Textbook: No
+Tags: Get Ready To Read, Skip Class? You Won't Pass, Graded By Few Things
+Review: Networking is a difficult topic at the best of times but this professor just makes the learning process that much harder. The book is very convoluted but it still makes more sense. She's very quiet and even when you can hear her, understanding what she's saying is hard because her English isn't very good.
+
+---
+
+Course: CSCI409
+Date: Sep 13th, 2019
+Quality: 1.0
+Difficulty: 3.0
+For Credit: Yes
+Attendance: N/A
+Would Take Again: No
+Grade: A+
+Textbook: No
+Tags: None
+Review: Horrible experience in this class, took mobile app development and spent the whole semester copying code from the board without any explanation as to what I was doing or why I was doing it. Her TA started teaching in the end because students started complaining. I learned more from the TA and doing the project than I did from this professor.
+
+---
+
+Course: CSCI274
+Date: Sep 13th, 2019
+Quality: 2.0
+Difficulty: 1.0
+For Credit: Yes
+Attendance: Not Mandatory
+Would Take Again: No
+Grade: A+
+Textbook: Yes
+Tags: None
+Review: Never once showed up on time for this class all semester, eventually stopped going because this professor was so boring and just read from her slides. Learned more from my co-requisite engineering labs. AVOID.
+
+---
+
+Course: CSCI410
+Date: Sep 12th, 2019
+Quality: 1.0
+Difficulty: 2.0
+For Credit: Yes
+Attendance: Mandatory
+Would Take Again: No
+Grade: Not sure yet
+Textbook: Yes
+Tags: Get Ready To Read
+Review: Reads directly from slides/book. Struggles with speaking English. Difficult to understand. Allows use of book during exams because she hasn't taught the material properly. Gives assignments without enough criteria to complete them or even know where to start.
+
+---
+
+Course: CSCI410
+Date: Sep 12th, 2019
+Quality: 1.0
+Difficulty: 4.0
+For Credit: Yes
+Attendance: Not Mandatory
+Would Take Again: No
+Textbook: No
+Tags: Get Ready To Read, Group Projects
+Review: Avoid this professor. Her teaching skills are not great, her English isn't great either and she just reads from the book. If you don't read the book yourself you won't learn anything in her class.
+
+---
+
+Course: CSCI410
+Date: Nov 28th, 2017
+Quality: 2.0
+Difficulty: 3.0
+For Credit: Yes
+Attendance: Not Mandatory
+Would Take Again: No
+Grade: C
+Textbook: Yes
+Tags: Tests Are Tough
+Review: If you can, PLEASE DON'T TAKE Dr. Bei for any of your computer science courses. She reads PowerPoint slides word for word, so you won't learn anything. You will basically have to teach yourself the material.
+
+---

@@ -1,0 +1,139 @@
+Professor: Vipin Menon
+Department: Computer Science
+School: McNeese State University
+Overall Rating: 4.4/5
+Would Take Again: 100%
+Difficulty: 2.4/5
+Summary: Dr. Menon is widely praised for his engaging lectures, caring attitude, and fair exams. Students consistently recommend attending every class and taking detailed notes. Tests closely follow lecture material and posted review questions.
+--- REVIEWS ---
+Course: CSCI180
+Date: Dec 20th, 2022
+Quality: 5.0
+Difficulty: 2.0
+For Credit: Yes
+Attendance: Mandatory
+Would Take Again: Yes
+Grade: A+
+Textbook: N/A
+Tags: Amazing Lectures, Gives Good Feedback, Lecture Heavy
+Review: Dr. Menon is one of the best professors that I have had. He cares about each student (he even learns each one's name) and is willing to help students that try their hardest. What he teaches in class is on his exams and assignments, so be sure to study what he puts on the board. I'm grateful that I have had a chance to have Dr. Menon as a professor.
+
+---
+Course: CSCI180
+Date: Jan 22nd, 2022
+Quality: 5.0
+Difficulty: 4.0
+For Credit: Yes
+Attendance: Mandatory
+Would Take Again: Yes
+Grade: B
+Textbook: Yes
+Tags: Respected, Inspirational, Amazing Lectures
+Review: As a professional in my career, I wanted to make sure that other students knew how important Dr. Menon's classes are. His teaching style, his attitude, and his character will prepare you for the future better than anything else you will get at McNeese if you are a Comp Sci student. Go to class and take notes. SW Louisiana is lucky to have him.
+
+---
+
+Course: CSCI274
+Date: May 7th, 2021
+Quality: 4.0
+Difficulty: 3.0
+For Credit: Yes
+Attendance: Mandatory
+Would Take Again: Yes
+Grade: A
+Textbook: No
+Tags: Skip Class? You Won't Pass, Graded By Few Things, Test Heavy
+Review: He's honestly a bit chaotic. His lectures are all over the place and random assignments that are super easy but worth a lot of points so if you miss them, it hurts your grade. But if you pay attention to lectures and take lots of notes, you'll be fine. Tests are exactly from notes. He posts review questions which are on the test word for word.
+
+---
+Course: CSCI274
+Date: May 2nd, 2019
+Quality: 5.0
+Difficulty: 3.0
+For Credit: Yes
+Attendance: Mandatory
+Would Take Again: Yes
+Textbook: No
+Tags: Skip Class? You Won't Pass, Amazing Lectures, Caring
+Review: Menon is fantastic. His lectures are great. He never assumes you know things and has no issue diving into further detail for your questions. You can tell he is really passionate and enjoys his work. He only gave us a final and midterm but let students who did poorly retake the midterm and took the average grade. Generous with giving good grades.
+
+---
+Course: CSCI309
+Date: May 16th, 2018
+Quality: 5.0
+Difficulty: 3.0
+For Credit: Yes
+Attendance: Mandatory
+Would Take Again: Yes
+Grade: A+
+Textbook: Yes
+Tags: Respected, Inspirational, Amazing Lectures
+Review: If Dr. Menon was a Starburst, he'd be the pink one.
+
+---
+
+Course: CSCI308
+Date: May 2nd, 2018
+Quality: 5.0
+Difficulty: 4.0
+For Credit: Yes
+Attendance: Mandatory
+Would Take Again: Yes
+Grade: A
+Textbook: Yes
+Tags: N/A
+Review: Great Professor!
+
+---
+Course: CSCI415
+Date: Nov 28th, 2017
+Quality: 4.0
+Difficulty: 3.0
+For Credit: Yes
+Attendance: Mandatory
+Would Take Again: Yes
+Grade: B+
+Textbook: No
+Tags: Participation Matters, Beware of Pop Quizzes, Amazing Lectures
+Review: Dr. Menon was one of the best professors I've had. His lectures are very easy to follow and you will get a good understanding of the material. Be prepared to take lots of notes and many quizzes. Try to attend all of his lectures if possible.
+
+---
+
+Course: CSCI419
+Date: Sep 7th, 2016
+Quality: 5.0
+Difficulty: 3.0
+For Credit: Yes
+Attendance: N/A
+Would Take Again: Yes
+Textbook: Yes
+Tags: Inspirational, Accessible Outside Class, Clear Grading Criteria
+Review: He is considered with the quality of education of his students and with the progress of the profession as a whole. It is worth noting that if you want depth of material, you will have to read the book. If you do not read more than the assigned material, you will like get a B or C. With moderate effort, an A is achievable for most science types.
+
+---
+Course: CSCI180
+Date: Nov 16th, 2014
+Quality: 4.5
+Difficulty: 4.0
+For Credit: Yes
+Attendance: Mandatory
+Would Take Again: N/A
+Grade: A-
+Textbook: No
+Tags: N/A
+Review: I find Professor Menon to be an excellent teacher, but he does not include many quizzes or tests. I am near the very end of the semester and we have had one homework assignment and one test. If you don't study and work hard with the assignments/tests he gives, you'll easily fail.
+
+---
+
+Course: CSCI308
+Date: May 8th, 2014
+Quality: 4.0
+Difficulty: 3.0
+For Credit: N/A
+Attendance: N/A
+Would Take Again: N/A
+Textbook: No
+Tags: N/A
+Review: Will spend 80% of the class going over basic concepts. If you are interested in getting a quality education then take someone else.
+
+---
