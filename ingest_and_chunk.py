@@ -20,26 +20,10 @@ import re
 
 DOCUMENTS_DIR = "documents_clean"
 
-# Noise filter: a chunk must contain at least one of these signals to be kept
-DOMAIN_KEYWORDS = {
-    "exam", "grade", "lecture", "homework", "attendance",
-    "textbook", "quiz", "test", "midterm", "final", "syllabus",
-    "assignment", "project", "lab", "notes", "slides", "office hours"
-}
-
-SENTIMENT_KEYWORDS = {
-    "loved", "hated", "dreaded", "amazing", "awful", "worst", "best",
-    "terrible", "great", "horrible", "fantastic", "avoid", "recommend",
-    "excellent", "outstanding", "disappointing", "frustrating", "helpful",
-    "useless", "brilliant", "incompetent", "caring", "rude", "kind",
-    "disorganized", "organized", "clear", "confusing"
-}
-
-# Regex to detect a numeric rating anywhere in the chunk text
-RATING_PATTERN = re.compile(r'\b\d+(\.\d+)?\s*/\s*5\b|\bquality\s*:\s*\d', re.IGNORECASE)
-
-# Regex to detect a course code (e.g. CSCI309, BIOL225, MATH190)
-COURSE_CODE_PATTERN = re.compile(r'\b[A-Z]{2,5}\s*\d{3,4}[A-Z]?\b')
+# Noise filter: minimum word count to keep a chunk
+# Keyword-based approach was abandoned because plural forms, synonyms,
+# and unexpected phrasing caused important chunks to be silently dropped.
+MIN_WORD_COUNT = 15
 
 
 # ── Helper: parse the header block ───────────────────────────────────────────
@@ -123,38 +107,10 @@ def parse_review_block(block: str) -> dict:
 
 def passes_noise_filter(review_text: str) -> bool:
     """
-    A chunk passes if its review text contains at least ONE of:
-      - a numeric quality rating (e.g. "Quality: 4.0" already parsed, but
-        check raw text too for inline mentions like "3/5")
-      - a course code (e.g. CSCI309, BIOL225)
-      - a domain keyword
-      - a sentiment keyword
-
-    Empty or near-empty reviews are always rejected.
+    A chunk passes if its review text contains at least MIN_WORD_COUNT words.
+    This avoids silently dropping chunks due to keyword mismatches.
     """
-    if len(review_text.strip()) < 10:
-        return False
-
-    text_lower = review_text.lower()
-
-    # Check for inline rating pattern (e.g. "4/5", "3.5/5")
-    if RATING_PATTERN.search(review_text):
-        return True
-
-    # Check for course code in the review text itself
-    if COURSE_CODE_PATTERN.search(review_text):
-        return True
-
-    # Check for domain keywords
-    words = set(re.findall(r'\b\w+\b', text_lower))
-    if words & DOMAIN_KEYWORDS:
-        return True
-
-    # Check for sentiment keywords
-    if words & SENTIMENT_KEYWORDS:
-        return True
-
-    return False
+    return len(review_text.strip().split()) >= MIN_WORD_COUNT
 
 
 # ── Main: load and chunk a single file ───────────────────────────────────────

@@ -1,0 +1,224 @@
+Professor: Jennifer Lavergne
+Department: Computer Science
+School: McNeese State University
+Overall Rating: 1.8/5
+Would Take Again: 20%
+Difficulty: 4.1/5
+Summary: Dr. Lavergne is one of the lowest-rated CS professors at McNeese with 28 out of 36 ratings being "Awful." Students consistently report she is disorganized, rude, and delays grading until the end of the semester. However, a minority of students note her tests are open book, she curves grades ending in 9, and past quizzes repeat on finals. Attendance is mandatory and missing quizzes cannot be retaken.
+
+--- REVIEWS ---
+
+Course: CSCI491
+Date: Mar 20th, 2025
+Quality: 1.0
+Difficulty: 5.0
+For Credit: Yes
+Attendance: Mandatory
+Would Take Again: No
+Textbook: N/A
+Tags: Get Ready To Read, Participation Matters, Hilarious
+Review: Her classes are very disorganized since she doesn't actually teach. She seems very uneducated and has some mental health issues, as she gets angry and rude easily. I had to report her once for harassment and hostility. She also sends out emails during weekends to change class requirements and homework deadlines, and blames us for any issues.
+
+---
+
+Course: CSCI309
+Date: Mar 9th, 2025
+Quality: 1.0
+Difficulty: 2.0
+For Credit: Yes
+Attendance: Mandatory
+Grade: A
+Textbook: N/A
+Tags: None
+Review: If you care about your time at all you should avoid taking her. If you care about your happiness you should avoid taking her. If you care about actually learning you should avoid taking her. AVOID TAKING HER. Sadly, if your major is related to computer science at all you will HAVE to take her. It sucks so much...
+
+---
+
+Course: 308
+Date: Feb 2nd, 2025
+Quality: 1.0
+Difficulty: 5.0
+Attendance: Not Mandatory
+Grade: C
+Textbook: N/A
+Tags: Participation Matters, Hilarious
+Review: Completely empty-headed and deluded about her abilities to teach and work, thinking she's more capable than she actually is.
+
+---
+
+Course: CSCI309
+Date: Jan 28th, 2025
+Quality: 5.0
+Difficulty: 2.0
+For Credit: Yes
+Attendance: Mandatory
+Would Take Again: Yes
+Grade: A
+Textbook: N/A
+Tags: Group Projects, Lots of Homework
+Review: Her criticisms on this platform are very valid but I just want to point out her pros. She curves grades that end in a 9 so 89, 79..... Her tests/exams are fairly easy and it is all open book but she has a strict requirement on the book you can use. You just need to study past quizzes and exams for the finals, it's the exact same questions.
+
+---
+
+Course: CSCI180
+Date: Jan 17th, 2025
+Quality: 1.0
+Difficulty: 5.0
+Attendance: Mandatory
+Textbook: N/A
+Tags: Hilarious, Graded By Few Things
+Review: I heard her husband doesn't treat her well. No wonder she's so messed up.
+
+---
+
+Course: CSCI309
+Date: Jan 2nd, 2025
+Quality: 1.0
+Difficulty: 5.0
+For Credit: Yes
+Attendance: Not Mandatory
+Grade: B
+Textbook: N/A
+Tags: Group Projects, Hilarious, Graded By Few Things
+Review: She doesn't know how to code and has no idea about any programming language. Despite this, she has a bad attitude toward every student.
+
+---
+
+Course: CSCI491
+Date: Dec 19th, 2024
+Quality: 1.0
+Difficulty: 5.0
+For Credit: Yes
+Attendance: Mandatory
+Grade: A
+Textbook: N/A
+Tags: None
+Review: Very, very, very, very, very, very, very, very, very, very, very, very, very, very, very, very, very, very, very, very, very, very, very, very, very, very, very, very, very, very, very, very, very, very, very, very, very, very, very BAD--TERRIBLE AWFUL HORRIBLE THE WORST! DEATH DESPAIR ANGER CONFUSION VIETNAM WAR FLASHBACKS!!!!!!!
+
+---
+
+Course: CSCI180
+Date: Oct 31st, 2024
+Quality: 2.0
+Difficulty: 2.0
+For Credit: Yes
+Attendance: Mandatory
+Grade: Not sure yet
+Textbook: N/A
+Tags: Lecture Heavy
+Review: Only pro was that her tests and work felt pretty fair. Cons are that her lectures were 20-40% off-topic vignettes about herself or industry or later classes or other coding languages. "When you get to C!" But this is Python, "Your future employer will!" we're not all CS majors and this is an intro class, "Once, my husband had to!" ??
+
+---
+
+Course: CSCI309
+Date: Oct 11th, 2024
+Quality: 1.0
+Difficulty: 5.0
+For Credit: Yes
+Attendance: Mandatory
+Textbook: N/A
+Tags: Group Projects
+Review: When she being rude, I guess the best way is to ignore her. The entire class actually ignored what she said. She is garrulous about her personal stuff, which can be annoying during lectures. Well, somebody gonna take her job in the future if she keeps being disrespectful to her own job. Her words will harm her one day.
+
+---
+
+Course: CSCI309
+Date: Oct 4th, 2024
+Quality: 1.0
+Difficulty: 5.0
+Attendance: Mandatory
+Grade: Drop/Withdrawal
+Textbook: N/A
+Tags: Tough Grader, Hilarious, Test Heavy
+Review: Absolutely the worst professor I've ever had. Decided to change my major just because of her. Avoid this professor if you value your GPA and education or regret later.
+
+---
+
+Course: 308
+Date: Oct 10th, 2024
+Quality: 1.0
+Difficulty: 5.0
+Textbook: N/A
+Tags: None
+Review: Absolutely the worst professor. She likes to brag endlessly about her jobs. Don't listen to her advice about jobs and career fairs she cooperates with — they are a scam! Make an effort to finish her classes, and don't take any more of her classes if they are not mandatory. The CS department is not good in general, so be prepared to learn by yourself.
+
+---
+
+Course: CSCI427
+Date: Sep 26th, 2024
+Quality: 1.0
+Difficulty: 5.0
+For Credit: Yes
+Attendance: Mandatory
+Grade: Incomplete
+Textbook: N/A
+Tags: None
+Review: Where to begin... the rants, the mid-class mental breakdowns, the unrealistically hard assignments? It's like poetry in motion. But instead of poetry it's two trains colliding at full speed. If I had to take another one of her classes again, I'd drop out.
+
+---
+
+Course: CSCI491
+Date: Aug 28th, 2024
+Quality: 1.0
+Difficulty: 5.0
+For Credit: Yes
+Attendance: Mandatory
+Grade: A
+Textbook: N/A
+Tags: None
+Review: Always trying to prove/reassure to herself that she knows more than students; tries to make up for her insecurities. She should've went with art school instead of CS, not while she's teaching a full course load. I hope she can reach deep down to find humility. Running away from it only exposes it further. You have to take her 3+ times btw LOL!!!!!!
+
+---
+
+Course: CSCI448
+Date: May 8th, 2024
+Quality: 1.0
+Difficulty: 3.0
+For Credit: Yes
+Attendance: Mandatory
+Grade: A
+Textbook: N/A
+Tags: Get Ready To Read, Lecture Heavy, Test Heavy
+Review: Lavergne is probably the worst professor in the CS department. She doesn't grade until the last minute, I didn't have a single exam grade entered going into the final. She has a very condescending tone when speaking to her one on one. Her instructions for labs aren't clear and when you ask for help she just tells you to read the instructions again.
+
+---
+
+Course: CSCI309
+Date: Apr 29th, 2024
+Quality: 1.0
+Difficulty: 3.0
+For Credit: Yes
+Attendance: Mandatory
+Grade: B
+Textbook: N/A
+Tags: Lecture Heavy
+Review: Dr. Lavergne does not grade ~90% of coursework until the last few weeks of the semester and is prone to being rude for little to no reason. However, she is knowledgeable in what she teaches and her lectures are easy to understand. She also loves to assign quizzes that you cannot retake if you miss class, so make sure to attend.
+
+---
+
+Course: 308
+Date: Apr 26th, 2024
+Quality: 1.0
+Difficulty: 3.0
+For Credit: Yes
+Attendance: Mandatory
+Grade: C-
+Textbook: N/A
+Tags: Tough Grader, Group Projects, Lots of Homework
+Review: Teaches 5 classes at one time; doesn't have time to actually teach any of them. More classes taught = more money. Makes you sign contracts; if not signed you receive an F. Doesn't take criticism; yelled at students 3 times during semester; threatened to call security on a student; all assignments have errors; slides copied from Microsoft; devil.
+
+---
+
+Course: 308
+Date: Apr 19th, 2024
+Quality: 1.0
+Difficulty: 5.0
+For Credit: Yes
+Attendance: Mandatory
+Grade: C
+Textbook: N/A
+Online Class: Yes
+Tags: Graded By Few Things
+Review: She just can't teach. Being lazy and can talk your ears off about irrelevant things during class.
+
+---
