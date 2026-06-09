@@ -218,3 +218,134 @@ The completed ingest_and_chunk.py, the Retrieval Approach section from planning.
 A retrieval pipeline with embed_and_store(), detect_query_type(), is_out_of_scope(), and retrieve() using L2 distance (ChromaDB default).
 - *What I changed or overrode:*
 After running evaluation queries and finding distance scores above 0.5 (failing the checkpoint requirement), I directed the switch from L2 to cosine distance by adding hnsw:space: cosine to the ChromaDB collection metadata, which brought scores into the expected range.
+
+**Sample Chunks**
+
+The following are 5 representative chunks from the ingestion pipeline, drawn from different professors and departments.
+Chunk 1 — Source: documents/Andrew_Mudd.txt
+
+Professor: Andrew Mudd | Department: Biology | Course: BIOL225 | Date: Apr 28th, 2026 | Rating: 5.0
+Text: "Dr. Mudd is genuinely one of my favorite professors I have ever had. I took him for A&P 225 lab and lecture; I made a 90 in lecture and about a 94 in lab. I enjoyed having him as a professor to the point where I chose an early (8 am) class to have him as my lab instructor for 226 A&P (85.45)— these are not easy courses, but he makes it possible."
+
+Chunk 2 — Source: documents/Constance_Kersten.txt
+
+Professor: Constance Kersten | Department: Biology | Course: BIOL101 | Date: Jan 13th, 2025 | Rating: 1.0
+Text: "Was a hassle to deal with. I've never seen more unreasonable and uncooperative online policies. And when you ask a genuine question she assumes that you are being problematic. Overall, a teacher I wouldn't take but that's just me."
+
+Chunk 3 — Source: documents/Lara_Guidroz.txt
+
+Professor: Lara Guidroz | Department: Mathematics | Course: STAT231 | Date: May 3rd, 2024 | Rating: 2.0
+Text: "Ms. Guidroz's online stats lectures were impressively organized, yet the grading system is heavily flawed and the worst I've seen since beginning college. Your grade solely relies on 3 tests, neglecting the MANY hours spent on homework assignments and quizzes. Despite this flaw, she's still a solid choice for stats instruction, worth considering."
+
+Chunk 4 — Source: documents/Lara_Guidroz.txt
+
+Professor: Lara Guidroz | Department: Mathematics | Course: STAT231 | Date: May 16th, 2012 | Rating: 5.0
+Text: "Great professor! I dropped this class with a different professor last semester because I was in danger of failing it. Retook it the next semester with Mrs. Guidroz and passed with an A. She was able to explain things so that they made sense. I would highly recommend her to anyone needing to take Statistics."
+
+Chunk 5 — Source: documents/Susie_Beasley.txt
+
+Professor: Susie Beasley | Department: Biology | Course: RADS101 | Date: Dec 10th, 2022 | Rating: 5.0
+Text: "Didn't know what to expect with this class, but passed with an A easily. 4 tests and 5-6 HW assignments that are easy to complete. Tests come straight from the PowerPoints and she gives study guides that let you know exactly what to study for!"
+
+---
+
+## Retrieval Test Results
+
+**Query 1: "Does Hardee give partial credit on exams?"**
+
+| Rank | Professor | Course | Date | Distance | Relevant? |
+|------|-----------|--------|------|----------|-----------|
+| 1 | Lyle Hardee | MATH185 | May 11th, 2021 | 0.5422 | Yes |
+| 2 | Lyle Hardee | MATH291 | Dec 9th, 2024 | 0.5801 | Yes |
+| 3 | Lyle Hardee | MATH130 | Dec 11th, 2025 | 0.5918 | Yes |
+| 4 | Lyle Hardee | MATH190 | Jun 2nd, 2022 | 0.5946 | Yes |
+| 5 | Lyle Hardee | MATH190 | Apr 3rd, 2023 | 0.6112 | Yes |
+
+All 5 chunks are relevant — the professor filter correctly narrowed retrieval to only Hardee reviews. Result 3 is the most directly relevant, containing the explicit partial credit statement. Results 1, 2, 4, and 5 provide supporting context about his teaching style and exam patterns.
+
+---
+
+**Query 2: "Who should I prefer taking CSCI309 with?"**
+
+| Rank | Professor | Course | Date | Distance | Relevant? |
+|------|-----------|--------|------|----------|-----------|
+| 1 | Jennifer Lavergne | CSCI309 | Mar 9th, 2025 | 0.6434 | Partially |
+| 2 | Jennifer Lavergne | CSCI309 | Jan 28th, 2025 | 0.7863 | Partially |
+| 3 | Jennifer Lavergne | CSCI309 | Oct 4th, 2024 | 0.8536 | Partially |
+| 4 | Jennifer Lavergne | CSCI309 | Jan 2nd, 2025 | 0.8734 | Partially |
+| 5 | Jennifer Lavergne | CSCI309 | Apr 29th, 2024 | 0.8799 | Partially |
+
+Retrieval filtered by course code CSCI309 correctly, but all 5 results are Lavergne only. Menon has no chunks tagged CSCI309 in the dataset so he never entered the candidate pool. This is the known failure case documented in the Failure Case Analysis section.
+
+---
+
+**Query 3: "Should I go through past quizzes and exams to prepare for Lavergne's final?"**
+
+| Rank | Professor | Course | Date | Distance | Relevant? |
+|------|-----------|--------|------|----------|-----------|
+| 1 | Jennifer Lavergne | CSCI309 | Apr 29th, 2024 | 0.4479 | Yes |
+| 2 | Jennifer Lavergne | CSCI448 | May 8th, 2024 | 0.4744 | Yes |
+| 3 | Jennifer Lavergne | CSCI309 | Jan 28th, 2025 | 0.6347 | Yes |
+| 4 | Jennifer Lavergne | CSCI309 | Mar 9th, 2025 | 0.7353 | Yes |
+| 5 | Jennifer Lavergne | CSCI427 | Sep 26th, 2024 | 0.745 | Yes |
+
+All 5 chunks are Lavergne reviews. Result 3 is the key chunk — it explicitly states the final contains the exact same questions as past quizzes. The professor filter correctly scoped retrieval to Lavergne only, and the lowest distance score (0.4479) confirms strong semantic match.
+
+---
+
+**Example Responses**
+- Example 1 — Working response with source attribution
+Query: "Should I go through past quizzes and exams to prepare for Lavergne's final?"
+Response:
+
+Yes, you should go through past quizzes and exams to prepare for Lavergne's final, as the final exam contains the exact same questions.
+Sources:
+
+Jennifer Lavergne | CSCI309 | Jan 28th, 2025 | Rating: 5.0/5
+
+
+- Example 2 — Working response with source attribution
+Query: "What strategies should I follow to do good in Bei Xie's classes?"
+Response:
+
+To do well in Professor Bei Xie's classes, it is suggested to copy everything she writes, pay slight attention, and read the chapters to understand the material. Additionally, for tests, they are open notes and open everything, so printing everything might be helpful. For group projects, keeping it simple is recommended, as she likes simple projects.
+Sources:
+
+Bei Xie | CSCI410 | Dec 4th, 2022 | Rating: 3.0/5
+Bei Xie | CSCI410 | Sep 12th, 2019 | Rating: 1.0/5
+
+
+- Example 3 — Out-of-scope query showing refusal
+Query: "What do students think of Professor Johnson?"
+Response:
+
+I don't have reviews for that professor in the current dataset.
+
+The out-of-scope handler in embed_and_retrieve.py catches unrecognized professor names before retrieval runs, so no hallucinated response is generated.
+
+**Query Interface**
+The UI runs on Gradio at localhost:7860 when you launch generate.py.
+Input:
+
+A text box where you type your question in plain english. There are also example chips below the box if you don't know where to start.
+
+Output:
+
+Answer — the response from the LLM, grounded only in the retrieved reviews.
+Retrieved From — shows every chunk that was pulled for that query, listed as Professor | Course | Date | Rating so you can see exactly where the answer came from.
+
+Sample interaction:
+
+Input: Does Hardee give partial credit on exams?
+Answer: According to one review, Professor Hardee gives partial credit if you get anything on the problem correct, but it does not specifically state that this is for exams. It is mentioned in the context of the course in general.
+Sources:
+
+Lyle Hardee | MATH130 | Dec 11th, 2025 | Rating: 4.0/5
+
+Retrieved From:
+
+Lyle Hardee | MATH185 | May 11th, 2021 | Rating: 5.0/5
+Lyle Hardee | MATH291 | Dec 9th, 2024 | Rating: 5.0/5
+Lyle Hardee | MATH130 | Dec 11th, 2025 | Rating: 4.0/5
+Lyle Hardee | MATH190 | Jun 2nd, 2022 | Rating: 5.0/5
+Lyle Hardee | MATH190 | Apr 3rd, 2023 | Rating: 5.0/5
