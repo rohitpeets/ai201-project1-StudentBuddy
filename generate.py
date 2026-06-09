@@ -13,24 +13,17 @@ import gradio as gr
 from embed_and_retrieve import retrieve, embed_and_store
 from ingest_and_chunk import ingest_all
 
-# ── Load environment variables ────────────────────────────────────────────────
-
 load_dotenv()
 GROQ_API_KEY = os.getenv("GROQ_API_KEY")
-
 if not GROQ_API_KEY:
     raise ValueError("GROQ_API_KEY not found in .env file.")
 
 groq_client = Groq(api_key=GROQ_API_KEY)
 
-# ── Load and embed chunks on startup ─────────────────────────────────────────
-
 print("[INFO] Loading and embedding chunks...")
 chunks = ingest_all()
 embed_and_store(chunks)
 print("[INFO] Ready.\n")
-
-# ── System prompt ─────────────────────────────────────────────────────────────
 
 SYSTEM_PROMPT = """You are a helpful assistant for McNeese State University students.
 You help students make informed decisions about which professors to take based on real student reviews.
@@ -52,17 +45,13 @@ SOURCE ATTRIBUTION RULES:
 Keep your answer clear, helpful, and concise."""
 
 
-# ── Core ask function ─────────────────────────────────────────────────────────
-
 def ask(query: str) -> dict:
     results = retrieve(query)
-
     if not results:
         return {
             "answer": "I don't have reviews for that professor in the current dataset.",
             "sources": []
         }
-
     context_blocks = []
     for i, r in enumerate(results, 1):
         block = (
@@ -74,19 +63,8 @@ def ask(query: str) -> dict:
             f"Text: {r['text']}"
         )
         context_blocks.append(block)
-
     context = "\n\n".join(context_blocks)
-
-    user_message = f"""Retrieved reviews:
-
-{context}
-
----
-
-Student question: {query}
-
-Answer the question using ONLY the reviews above. Cite your sources at the end."""
-
+    user_message = f"""Retrieved reviews:\n\n{context}\n\n---\n\nStudent question: {query}\n\nAnswer the question using ONLY the reviews above. Cite your sources at the end."""
     response = groq_client.chat.completions.create(
         model="llama-3.3-70b-versatile",
         messages=[
@@ -96,248 +74,328 @@ Answer the question using ONLY the reviews above. Cite your sources at the end."
         temperature=0.2,
         max_tokens=1024,
     )
-
     answer = response.choices[0].message.content
     sources = [
         f"{r['professor']} | {r['course']} | {r['date']} | Rating: {r['rating']}/5"
         for r in results
     ]
-
     return {"answer": answer, "sources": sources}
 
-
-# ── Gradio handler ────────────────────────────────────────────────────────────
 
 def handle_query(question: str):
     if not question.strip():
         return "Please enter a question.", ""
-
     result  = ask(question)
     answer  = result["answer"]
     sources = "\n".join(f"• {s}" for s in result["sources"])
     return answer, sources
 
 
-# ── Custom CSS ────────────────────────────────────────────────────────────────
-
 custom_css = """
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Merriweather:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500;600&display=swap');
 
-:root {
-    --bg:        #f5f5f0;
-    --surface:   #ffffff;
-    --border:    #e0ddd6;
-    --accent:    #2d6a4f;
-    --accent-lt: #40916c;
-    --text:      #1a1a1a;
-    --muted:     #6b7280;
-    --label:     #2d6a4f;
-}
+/* ── Reset Gradio chrome ── */
+footer, .gradio-footer { display: none !important; }
+.contain { padding: 0 !important; }
+#component-0 { gap: 0 !important; }
 
-body, .gradio-container {
-    background: var(--bg) !important;
-    font-family: 'Inter', sans-serif !important;
-    color: var(--text) !important;
+body, .gradio-container, .main, .wrap {
+    background: #f7f6f2 !important;
+    font-family: 'DM Sans', sans-serif !important;
+    color: #1c1c1c !important;
 }
 
 .gradio-container {
-    max-width: 1000px !important;
-    margin: 0 auto !important;
+    max-width: 100% !important;
     padding: 0 !important;
+    margin: 0 !important;
 }
 
-/* Header */
-.app-header {
-    background: var(--surface);
-    border-bottom: 2px solid var(--accent);
-    padding: 2.5rem 3rem 2rem;
-    text-align: center;
+/* ── Header ── */
+#header {
+    background: #1a3a2a;
+    padding: 48px 60px 40px;
+    border-bottom: 4px solid #2d6a4f;
 }
 
-.app-header .eyebrow {
-    font-size: 0.7rem;
+#header .tag {
+    display: inline-block;
+    background: rgba(255,255,255,0.1);
+    color: #74c69d;
+    font-size: 11px;
     font-weight: 600;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 0.6rem;
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-bottom: 16px;
 }
 
-.app-header h1 {
-    font-family: 'Merriweather', serif !important;
-    font-size: 2.2rem !important;
-    font-weight: 700 !important;
-    color: var(--text) !important;
-    margin-bottom: 0.5rem !important;
+#header h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 42px;
+    font-weight: 400;
+    color: #ffffff;
+    line-height: 1.15;
+    margin: 0 0 12px 0;
 }
 
-.app-header .subtitle {
-    font-size: 0.88rem;
-    color: var(--muted);
+#header h1 em {
+    color: #74c69d;
+    font-style: normal;
+}
+
+#header p {
+    font-size: 15px;
+    color: #a8c5b5;
     font-weight: 300;
+    margin: 0;
 }
 
-/* Body */
-.app-body {
-    padding: 2rem 3rem;
-    background: var(--bg);
+/* ── Main layout ── */
+#main-content {
+    display: grid;
+    grid-template-columns: 380px 1fr;
+    min-height: calc(100vh - 220px);
 }
 
-/* Input card */
-.input-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 1.75rem;
-    margin-bottom: 1.5rem;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+#left-panel {
+    background: #ffffff;
+    border-right: 1px solid #e5e2db;
+    padding: 36px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
-textarea, input[type="text"] {
-    background: var(--bg) !important;
-    border: 1px solid var(--border) !important;
-    border-radius: 6px !important;
-    color: var(--text) !important;
-    font-family: 'Inter', sans-serif !important;
-    font-size: 0.95rem !important;
-    padding: 0.85rem 1rem !important;
+#right-panel {
+    background: #f7f6f2;
+    padding: 36px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* ── Input section ── */
+#left-panel .section-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #2d6a4f;
+    margin-bottom: 8px;
+}
+
+#left-panel textarea,
+#left-panel input {
+    background: #f7f6f2 !important;
+    border: 1.5px solid #ddd9d0 !important;
+    border-radius: 8px !important;
+    color: #1c1c1c !important;
+    font-family: 'DM Sans', sans-serif !important;
+    font-size: 14px !important;
+    font-weight: 400 !important;
+    padding: 14px 16px !important;
+    line-height: 1.6 !important;
+    resize: none !important;
     transition: border-color 0.2s, box-shadow 0.2s !important;
+    width: 100% !important;
 }
 
-textarea:focus, input[type="text"]:focus {
-    border-color: var(--accent) !important;
-    box-shadow: 0 0 0 3px rgba(45, 106, 79, 0.12) !important;
+#left-panel textarea:focus,
+#left-panel input:focus {
+    border-color: #2d6a4f !important;
+    box-shadow: 0 0 0 3px rgba(45,106,79,0.1) !important;
     outline: none !important;
+    background: #ffffff !important;
 }
 
-textarea::placeholder {
-    color: #aaa !important;
+#left-panel textarea::placeholder {
+    color: #b0aca4 !important;
+    font-style: italic !important;
 }
 
-/* Button */
-button.primary {
-    background: var(--accent) !important;
-    border: none !important;
-    border-radius: 6px !important;
-    color: #ffffff !important;
-    font-family: 'Inter', sans-serif !important;
-    font-size: 0.85rem !important;
+/* label override */
+#left-panel label span,
+#right-panel label span {
+    font-family: 'DM Sans', sans-serif !important;
+    font-size: 10px !important;
     font-weight: 600 !important;
-    letter-spacing: 0.08em !important;
+    letter-spacing: 0.18em !important;
     text-transform: uppercase !important;
-    padding: 0.75rem 2rem !important;
-    margin-top: 1rem !important;
+    color: #2d6a4f !important;
+}
+
+#right-panel .sources-box label span {
+    color: #7a7570 !important;
+}
+
+/* ── Ask button ── */
+#ask-btn button {
+    background: #2d6a4f !important;
+    border: none !important;
+    border-radius: 8px !important;
+    color: #ffffff !important;
+    font-family: 'DM Sans', sans-serif !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.12em !important;
+    text-transform: uppercase !important;
+    padding: 14px !important;
     width: 100% !important;
     cursor: pointer !important;
-    transition: background 0.2s, transform 0.1s !important;
+    transition: background 0.2s, transform 0.1s, box-shadow 0.2s !important;
+    box-shadow: 0 2px 8px rgba(45,106,79,0.25) !important;
 }
 
-button.primary:hover {
-    background: var(--accent-lt) !important;
+#ask-btn button:hover {
+    background: #40916c !important;
     transform: translateY(-1px) !important;
+    box-shadow: 0 4px 16px rgba(45,106,79,0.35) !important;
 }
 
-/* Output cards */
-.output-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 1.75rem;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+/* ── Example chips ── */
+#examples-section {
+    margin-top: 4px;
 }
 
-.output-card label,
-.output-card label span {
-    font-size: 0.7rem !important;
-    font-weight: 600 !important;
-    letter-spacing: 0.15em !important;
-    text-transform: uppercase !important;
-    color: var(--label) !important;
-    font-family: 'Inter', sans-serif !important;
+#examples-section .chip-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #9c9890;
+    margin-bottom: 10px;
 }
 
-.output-card textarea {
-    border: none !important;
-    background: transparent !important;
-    color: var(--text) !important;
-    font-size: 0.92rem !important;
+#examples-section .chips {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+#examples-section .chip {
+    background: #f0ede6;
+    border: 1px solid #e5e2db;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 12px;
+    color: #4a4540;
+    cursor: pointer;
+    transition: background 0.15s, border-color 0.15s;
+    text-align: left;
+    font-family: 'DM Sans', sans-serif;
+}
+
+#examples-section .chip:hover {
+    background: #e8f5ee;
+    border-color: #2d6a4f;
+    color: #2d6a4f;
+}
+
+/* ── Output panels ── */
+#right-panel textarea {
+    background: #ffffff !important;
+    border: 1.5px solid #e5e2db !important;
+    border-radius: 8px !important;
+    color: #1c1c1c !important;
+    font-family: 'DM Sans', sans-serif !important;
+    font-size: 14px !important;
     font-weight: 400 !important;
     line-height: 1.75 !important;
+    padding: 16px !important;
     resize: none !important;
-    padding: 0.5rem 0 0 !important;
 }
 
-.sources-card label,
-.sources-card label span {
-    color: var(--muted) !important;
+/* ── Footer ── */
+#footer {
+    background: #1a3a2a;
+    padding: 20px 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
-/* Footer */
-.app-footer {
-    background: var(--surface);
-    border-top: 1px solid var(--border);
-    padding: 1.25rem 3rem;
-    text-align: center;
+#footer .prof-list {
+    font-size: 11px;
+    color: #74c69d;
+    letter-spacing: 0.04em;
 }
 
-.app-footer p {
-    font-size: 0.75rem;
-    color: var(--muted);
-    line-height: 1.8;
+#footer .built-tag {
+    font-size: 11px;
+    color: #4a8a6a;
+    font-weight: 500;
 }
 
-.app-footer .accent-text {
-    color: var(--accent);
-    font-weight: 600;
-}
-
-footer { display: none !important; }
-
+/* scrollbar */
 ::-webkit-scrollbar { width: 5px; }
-::-webkit-scrollbar-track { background: var(--bg); }
-::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+::-webkit-scrollbar-track { background: #f7f6f2; }
+::-webkit-scrollbar-thumb { background: #d5d0c8; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #2d6a4f; }
 """
-
-# ── Gradio UI ─────────────────────────────────────────────────────────────────
 
 with gr.Blocks(css=custom_css, title="McNeese Professor Guide") as demo:
 
     gr.HTML("""
-    <div class="app-header">
-        <div class="eyebrow">McNeese State University</div>
-        <h1>Unofficial Professor Guide</h1>
-        <div class="subtitle">Answers grounded in real student reviews — no hallucination, no guessing.</div>
+    <div id="header">
+        <div class="tag">McNeese State University</div>
+        <h1>Unofficial <em>Professor Guide</em></h1>
+        <p>Real student reviews · Grounded answers · No hallucination</p>
     </div>
     """)
 
-    with gr.Column(elem_classes="app-body"):
-        with gr.Group(elem_classes="input-card"):
+    with gr.Row(elem_id="main-content"):
+
+        with gr.Column(elem_id="left-panel"):
             inp = gr.Textbox(
                 label="Your Question",
                 placeholder='e.g. "Does Hardee give partial credit on exams?"',
-                lines=2,
+                lines=4,
             )
-            btn = gr.Button("Ask", variant="primary")
+            btn = gr.Button("Ask →", variant="primary", elem_id="ask-btn")
 
-        with gr.Row(equal_height=True):
-            with gr.Group(elem_classes="output-card"):
-                answer = gr.Textbox(
-                    label="Answer",
-                    lines=12,
-                    interactive=False,
-                )
-            with gr.Group(elem_classes="output-card sources-card"):
-                sources = gr.Textbox(
-                    label="Retrieved From",
-                    lines=12,
-                    interactive=False,
-                )
+            gr.HTML("""
+            <div id="examples-section">
+                <div class="chip-label">Try asking</div>
+                <div class="chips">
+                    <div class="chip" onclick="document.querySelector('textarea').value='Does Hardee give partial credit on exams?'">
+                        Does Hardee give partial credit on exams?
+                    </div>
+                    <div class="chip" onclick="document.querySelector('textarea').value='Who should I take CSCI309 with?'">
+                        Who should I take CSCI309 with?
+                    </div>
+                    <div class="chip" onclick="document.querySelector('textarea').value='What strategies help in Bei Xie\\'s class?'">
+                        What strategies help in Bei Xie's class?
+                    </div>
+                    <div class="chip" onclick="document.querySelector('textarea').value='Should I study past quizzes for Lavergne\\'s final?'">
+                        Should I study past quizzes for Lavergne's final?
+                    </div>
+                </div>
+            </div>
+            """)
+
+        with gr.Column(elem_id="right-panel"):
+            answer = gr.Textbox(
+                label="Answer",
+                lines=14,
+                interactive=False,
+            )
+            sources = gr.Textbox(
+                label="Retrieved From",
+                lines=6,
+                interactive=False,
+                elem_classes="sources-box",
+            )
 
     gr.HTML("""
-    <div class="app-footer">
-        <p><span class="accent-text">Available Professors</span><br>
-        Andrew Mudd &middot; Bei Xie &middot; Constance Kersten &middot; Jennifer Lavergne &middot; Lara Guidroz
-        &middot; Lyle Hardee &middot; Shaikh Samad &middot; Susie Beasley &middot; Tristan Salinas &middot; Vipin Menon</p>
+    <div id="footer">
+        <div class="prof-list">
+            Andrew Mudd &middot; Bei Xie &middot; Constance Kersten &middot; Jennifer Lavergne &middot;
+            Lara Guidroz &middot; Lyle Hardee &middot; Shaikh Samad &middot; Susie Beasley &middot;
+            Tristan Salinas &middot; Vipin Menon
+        </div>
+        <div class="built-tag">Built with Gradio + Groq</div>
     </div>
     """)
 
