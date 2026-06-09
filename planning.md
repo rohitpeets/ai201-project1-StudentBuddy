@@ -66,7 +66,7 @@ One review per chunk (Average 100-300 Tokens)
 **Reasoning:**
 We are dealing with reviews by students, each review is a self contained opinion hence we chunk at the delimiter rather than a fixed size. Reviews are under the token limit of our embedding model which means there is no reason to split the data.Overlap is 0 because mixing reviews from different students will affect the data quality.
 
-Noise filter: A chunk is kept only if it contains at least one of the following: a numeric rating, a course code, a domain keyword (exam, grade, lecture, homework, attendance, textbook), or a sentiment keyword (loved, hated, dreaded, amazing, awful, worst, best, terrible, great, horrible, fantastic, avoid, recommend). This ensures both information-dense and emotionally expressive reviews are preserved.
+Noise filter: A chunk is kept only if it contains at least 15 words. This ensures genuinely empty or meaningless reviews are dropped while preserving all substantive content regardless of the specific words used. The keyword-based approach was abandoned because plural forms, synonyms, and unexpected phrasing caused important chunks to be silently dropped.
 
 Professor name handling: Professor name is stored in metadata only — it is NOT injected into the chunk text. Injecting the name into chunk text skews semantic embeddings toward the name string rather than review content. All professor-level filtering is handled exclusively at the ChromaDB metadata layer.
 
